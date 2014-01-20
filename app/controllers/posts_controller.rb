@@ -3,10 +3,14 @@ class PostsController < ApplicationController
   end
 
   def create
-    #render text: params[:post].inspect
-    @post = Post.new(params[:post])
+    @post = Post.new(post_params)
+ 
     @post.save
     redirect_to @post
+  end
+
+  def show
+  @post = Post.find(params[:id])
   end
 
   private

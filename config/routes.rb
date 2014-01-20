@@ -7,6 +7,8 @@ NkuRails::Application.routes.draw do
   root 'welcome#index'
 
   resource :posts
+
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
