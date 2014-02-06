@@ -12,7 +12,7 @@ class StudentsController < ApplicationController
         format.html { redirect_to students_path, notice: 'New student was successfully created!' }
       else
         format.html { render action: "new" }
-        end
+      end
     end
   end
 
