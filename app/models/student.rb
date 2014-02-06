@@ -8,7 +8,7 @@ class Student < ActiveRecord::Base
     :length => { :minimum => 3 }, 
     :uniqueness => true
 
-  validates :password,
+  validates :password_digest,
     :length => { :minimum => 4, :if => :validate_password? },
     :confirmation => { :if => :validate_password? }
   

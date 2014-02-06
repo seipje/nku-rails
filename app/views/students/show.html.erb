@@ -1,22 +1,25 @@
-<p>
-  <strong>Name:</strong>
-  <%= @student.name %>
-</p>
- 
-<p>
-  <strong>Nickname:</strong>
-  <%= @student.nickname %>
-</p>
+<h1>Bueller</h1>
 
-<p>
-  <strong>Email:</strong>
-  <%= @student.email %>
-</p>
- 
-<p>
-  <strong>Image:</strong>
-  <%= @student.imageURL %>
-</p>
+<p id="notice"><b><%= flash[:notice] %></b></p>
 
-<%= link_to 'Back', students_path %>
-<%= link_to 'Edit', edit_post_path(@student) %>
+<%= link_to 'Create a New Student', new_student_path %>
+<br />
+<br /> 
+
+<table>
+  
+ 
+  <% @students.each do |student| %>
+    <tr>
+      <td><%= link_to image_tag(student.imageURL, size: "200x200") %></td>
+      <td><p><%= student.name %></p></td>
+      <td><%= student.nickname %></td>
+      <td><%= student.email %></td>
+      <td><%= link_to 'Show', student %></td>
+      <td><%= link_to 'Edit', edit_student_path(student) %></td>
+      <td><%= link_to 'Destroy', student_path(student),
+                    method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
+

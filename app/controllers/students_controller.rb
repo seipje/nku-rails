@@ -17,7 +17,8 @@ class StudentsController < ApplicationController
   end
 
   def show
-    @student = Student.find(params[:id])
+    @students = Student.all
+      #find(params[:id])
   end
 
   def index
@@ -34,7 +35,7 @@ class StudentsController < ApplicationController
   def update
     @student = Student.find(params[:id])
   
-    if @student.update(params[:student].permit(:name, :nickname, :email, :imageURL))
+    if @student.update(params[:student].permit(:name, :password_digest, :nickname, :email, :imageURL))
       redirect_to students_path, notice: 'Your profile was successfully updated!'
     else
       render 'edit'
@@ -50,6 +51,6 @@ class StudentsController < ApplicationController
 
 private
   def student_params
-    params.require(:student).permit(:name, :password, :password_confirmation, :nickname, :email, :imageURL)
+    params.require(:student).permit(:name, :password_digest, :nickname, :email, :imageURL)
   end
 end
