@@ -16,6 +16,8 @@ gem 'jquery-rails'
 
 gem "bcrypt-ruby"
 
+gem "factory_girl_rails"
+
 group :development, :test do
   gem 'byebug'
 end

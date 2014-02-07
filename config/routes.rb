@@ -10,7 +10,9 @@ NkuRails::Application.routes.draw do
     resources :comments
   end
  
-  resources :students 
+  resources :students do
+    resources :sessions
+  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
