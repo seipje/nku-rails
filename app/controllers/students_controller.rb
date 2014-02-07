@@ -7,13 +7,24 @@ class StudentsController < ApplicationController
   def create
     @student = Student.new(student_params)
     
-    respond_to do |format|
-      if @student.save
-        format.html { redirect_to students_path, notice: 'New student was successfully created!' }
+
+    
+    #respond_to do |format|
+      
+      if @student && @student.authenticate(params[:password])
+        session[:student_id] = @student.id
+        redirect_to admin_root_path, :notice => "Welcome back, #{@student.name}"
       else
-        format.html { render action: "new" }
+        flash.now.alert = "Invalid email or password"
+        render "new"
       end
-    end
+      
+      #if @student.save
+       # format.html { redirect_to students_path, notice: 'New student was successfully created!' }
+      #else
+       # format.html { render action: "new" }
+     # end
+    #end
   end
 
   def show
@@ -35,7 +46,7 @@ class StudentsController < ApplicationController
   def update
     @student = Student.find(params[:id])
   
-    if @student.update(params[:student].permit(:name, :password_digest, :nickname, :email, :imageURL))
+    if @student.update(params[:student].permit(:name, :password, :nickname, :email, :imageURL))
       redirect_to students_path, notice: 'Your profile was successfully updated!'
     else
       render 'edit'
@@ -51,6 +62,6 @@ class StudentsController < ApplicationController
 
 private
   def student_params
-    params.require(:student).permit(:name, :password_digest, :nickname, :email, :imageURL)
+    params.require(:student).permit(:name, :password, :nickname, :email, :imageURL)
   end
 end
