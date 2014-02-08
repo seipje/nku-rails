@@ -10,9 +10,13 @@ NkuRails::Application.routes.draw do
     resources :comments
   end
  
-  resources :students do
-    resources :sessions
+  resources :students do  
   end
+  
+  get 'login', to: 'sessions#new', as: :new_session
+  post 'post_login', to: 'sessions#create', as: :create_session
+  get 'logout', to: 'sessions#destroy', as: :destroy_session
+ 
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -16,6 +16,14 @@ class Student < ActiveRecord::Base
 
   ActiveRecord::Base.clear_active_connections!
   
+  has_many :attendances, dependent: :destroy
+  
+  def self.in_seat(seat, date)
+  end
+  
+  def self.absent(date)
+  end
+  
   private
 
   def validate_password?
