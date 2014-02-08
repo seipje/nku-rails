@@ -32,4 +32,9 @@ private
     params.require(:student).permit(:name, :password, :password_confirmation, :nickname, :email, :imageURL)
   end
   
+  def current_user
+    @current_user ||= Student.find(session[:student_id]) if session[:student_id]
+  end
+
+  helper_method :current_user
 end
