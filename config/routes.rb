@@ -4,7 +4,7 @@ NkuRails::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'welcome#index'
+  root 'students#index'
 
   resources :posts do
     resources :comments
@@ -13,9 +13,9 @@ NkuRails::Application.routes.draw do
   resources :students do  
   end
   
-  get 'login', to: 'sessions#new', as: :new_session
-  post 'post_login', to: 'sessions#create', as: :create_session
-  get 'logout', to: 'sessions#destroy', as: :destroy_session
+  get 'login', to: 'sessions#index', as: :new_session
+  post 'post_login', to: 'sessions#login', as: :create_session
+  get 'logout', to: 'sessions#logout', as: :destroy_session
  
 
   # Example of regular route:
