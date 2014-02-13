@@ -1,21 +1,16 @@
-<h1>Bueller</h1>
-<br />
-<%= link_to 'New Student', new_student_path %>
-<br />  
-<p id="notice"><b><%= flash[:notice] %></b></p>
+<div class="page-header">
+  <h1>Bueller</h1>
+</div>
 
-<ul>
-  <% @students.each do |student| %>
-    <li>
-      <div><%= student.name %></div>
-      <div><%= student.nickname %></div>
-      <div><%= student.email %></div>
-      <img src='<%= student.image_url %>' />
-      <%= link_to 'Edit', edit_student_path(student) %>
-    </li>
-  <% end %>
-</ul>
+<% @students.each do |student| %>
+  <div id="<%=dom_id(student)%>" class="list-item">
+    
 
-
-
-  
+    <div class="info-block">
+      <%= image_tag student.imageURL, size: "150x150" %>
+      <b><%= student.name %></b>
+      <em>(<%= student.nickname %>)</em>
+      <%= student.email %>
+    </div>
+  </div>
+<% end %>

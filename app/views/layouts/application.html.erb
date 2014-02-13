@@ -14,6 +14,14 @@
   <%= link_to "Sign Up", new_student_path %>
   <%= link_to "Sign In", login_page_path %>
 <% end %>
+
+<% if flash[:error] -%>
+  <p class='error'><%=h flash[:error] %></p>
+<% end -%>
+<% if flash[:notice] -%>
+  <p class='notice'><%=h flash[:notice] %></p>
+<% end -%>
+
 <%= yield %>
 
 </body>

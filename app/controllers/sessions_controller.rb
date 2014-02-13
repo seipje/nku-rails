@@ -1,35 +1,22 @@
 class SessionsController < ApplicationController
-  def index
-    
-    current_student = get_current_student
-    if(current_student != nil)
-      redirect_to students_path
-    end
-   
-    @student = Student.new
-  end
+def new
+end
   
-  def login
-    
-    @student = Student.find_by_name(params[:student][:name])
-    
-    if( @student && @student.authenticate( params[:student][:password] ) )
-     
-      session[:student_id] = @student.id
-      redirect_to students_path
-    else
-     
-      @student = Student.new
-      flash.now.notice = "Invalid email or password"
-      render 'index'
-    end
-    
+def create
+  student = Student.find_by_email(params[:session][:email])
+ 
+  if student && student.authenticate(params[:session][:password])
+    session[:student_id] = student.id
+    redirect_to students_path, :notice => "Welcome, #{student.name}!"
+  else
+     flash.keep[:notice]="Invalid email or password"
+     render "new"
   end
+end
   
-  def logout
-    
-    session[:student_id] = nil
-    redirect_to students_path
-  end
+def logout
+  session[:student_id] = nil
+    redirect_to students_path, :notice => "Logged out!"
+ end
   
 end

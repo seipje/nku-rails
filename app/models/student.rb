@@ -1,8 +1,6 @@
 class Student < ActiveRecord::Base
-  
   has_secure_password
-
-  
+    
   validates :name, 
     :presence => true, 
     :length => { :minimum => 3 }, 
@@ -17,6 +15,10 @@ class Student < ActiveRecord::Base
   ActiveRecord::Base.clear_active_connections!
   
   has_many :attendances, dependent: :destroy
+  
+  def avatar
+    Avatar.from_student(self)
+  end
   
   def self.in_seat(seat, date)
   end
