@@ -9,7 +9,9 @@
 <body>
 <% if @current_student %>
   <div>Hello, <%= @current_student.name %></div>
+  <%= link_to "Edit Profile", edit_path %>
   <%= link_to "Sign Out", logout_path %>
+  <%= link_to "I'm here!" %>
 <% else %>
   <%= link_to "Sign Up", new_student_path %>
   <%= link_to "Sign In", login_page_path %>

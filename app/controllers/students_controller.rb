@@ -10,7 +10,14 @@ class StudentsController < ApplicationController
   end
 
   def edit
-    @student = current_student
+    @current_student = current_student
+    
+    if(@current_student == nil)
+      # They're not logged in
+      redirect_to students_path, notice: "You must be logged in to edit your info."
+    end
+    
+    @student = @current_student
   end
 
   def update
@@ -19,6 +26,7 @@ class StudentsController < ApplicationController
   end
 
   def index
+    @current_student = current_student
     @students = Student.all
   end
 

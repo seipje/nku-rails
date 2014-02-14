@@ -16,7 +16,7 @@ end
   
 def logout
   session[:student_id] = nil
-    redirect_to students_path, :notice => "Logged out!"
- end
+  redirect_to students_path, :notice => "Logged out!"
+end
   
 end
