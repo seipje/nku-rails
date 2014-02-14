@@ -1,11 +1,12 @@
-<h1>Attendance#index</h1>
-<p>Find me in app/views/attendance/index.html.erb</p>
+<h1>Attendance</h1>
+<h3><%= Date.today %></h3>
 
 <p>Quadrant 1</p>
 <% @in_seat_1.each do |student| %>
   <li><%= student.name %></li>
   <% end %>
 </p>
+
 <p>Quadrant 2</p>
 <% @in_seat_2.each do |student| %>
   <li><%= student.name %></li>

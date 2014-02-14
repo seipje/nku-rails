@@ -18,8 +18,8 @@ class AttendancesController < ApplicationController
   def create
     @attendance = Attendance.new(attendance_params)
     if @attendance.save
-      flash[:notice] = "You have recorded your attendance!"
       redirect_to attendances_path
+      flash[:notice] = "You have recorded your attendance!"
     else
       render 'new'
     end
