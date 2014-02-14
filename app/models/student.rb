@@ -21,6 +21,9 @@ class Student < ActiveRecord::Base
   end
   
   def self.in_seat(seat, date)
+    attendances =  Attendance.where("attended_on = ? AND seat = ?", date, seat)
+    student_ids = attendances.collect{ |a| a.student_id }
+    return Student.find(student_ids)
   end
   
   def self.absent(date)
