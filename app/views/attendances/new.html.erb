@@ -1,7 +1,17 @@
 <h1>Attendance#index</h1>
 <p>Find me in app/views/attendance/new.html.erb</p>
 
-
+<% if @attendance.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@attendance.errors.count, "error") %> prohibited
+      this post from being saved:</h2>
+    <ul>
+    <% @attendance.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
 <%= form_for :attendance, url: post_attendance_path do |f| %>
   <%= f.label :seat %>:
   <%= f.text_field :seat %><br />

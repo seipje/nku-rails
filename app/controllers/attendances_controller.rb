@@ -22,6 +22,7 @@ class AttendancesController < ApplicationController
       redirect_to students_path
       flash[:notice] = "You have recorded your attendance!"
     else
+         
       render 'new'
     end
   end
