@@ -1,48 +1,56 @@
 <div class="page-header">
 </div>
 
-<h1>Attendance</h1>
+<h2>Attendance</h2>
 <h3><%= Date.today %></h3>
-
+<div id="top">
+  <div class="quad1">
     <p>Quadrant 1</p>
     <% @in_seat_1.each do |student| %>
       <%= student.nickname %>
       <br>
       <%= image_tag student.imageURL, size: "150x150" %>
-    <br>
+      <br>
     <% end %>
-
+  </div>
+  <div class="quad2">
     <p>Quadrant 2</p>
     <% @in_seat_2.each do |student| %>
       <%= student.nickname %>
       <br>
       <%= image_tag student.imageURL, size: "150x150" %>
       <br>
-      <% end %>
-
+    <% end %>
+  </div>
+</div>
+<div class="bottom">
+  <div class="quad3">
     <p>Quadrant 3</p>
     <% @in_seat_3.each do |student| %>
       <%= student.nickname %>
       <br>
       <%= image_tag student.imageURL, size: "150x150" %>
       <br>
-      <% end %>
-
+    <% end %>
+  </div>
+  <div class="quad4">
     <p>Quadrant 4</p>
     <% @in_seat_4.each do |student| %>
       <%= student.nickname %>
       <br>
       <%= image_tag student.imageURL, size: "150x150" %>
       <br>
-      <% end %>
-
+    <% end %>
+  </div>
+  <div class="absent">
   <p>Absent</p>
   <% @absent.each do |student| %>
     <%= student.nickname %>
     <br>
     <%= image_tag student.imageURL, size: "150x150" %>
-    <% end %>
-
+  <% end %>
+  </div>
+</div>
 
 
 
