@@ -7,6 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <h1> Bueller </h1>
 <% if @current_student %>
   <div>Hello, <%= @current_student.name %></div>
   <%= link_to "Edit Profile", edit_path %>

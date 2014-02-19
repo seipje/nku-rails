@@ -1,3 +1,15 @@
 // Place all the styles related to the students controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+[class*='col-'] {
+  float: left;
+}
+
+.col-2-3 {
+  width: 60%;
+}
+
+.col-1-3 {
+  width: 40%;
+}

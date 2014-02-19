@@ -20,13 +20,16 @@ class Student < ActiveRecord::Base
     Avatar.from_student(self)
   end
   
-  def self.in_seat(seat, date)
+  def self.in_seat(seat, date=Date.today)
     attendances =  Attendance.where("attended_on = ? AND seat = ?", date, seat)
     student_ids = attendances.collect{ |a| a.student_id }
     return Student.find(student_ids)
   end
   
-  def self.absent(date)
+  def self.absent(date=Date.today)
+    attendances = Attendance.where("attended_on = ?", date)
+    attending_students = attendances.collect{ |a| a.student_id }
+    return Student.where.not(id: attending_students)
   end
   
   private
