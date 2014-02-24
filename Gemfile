@@ -18,6 +18,10 @@ gem "bcrypt-ruby"
 
 gem "factory_girl_rails"
 
+gem 'twitter-bootstrap-rails'
+gem 'therubyracer'
+gem 'less-rails'
+
 group :development, :test do
   gem 'byebug'
 end

@@ -6,51 +6,21 @@ html {
 margin:0;
 padding:0;
 color:#000;
-background:#CCFFFF;
+
 }
 
-.top{
-  background:#000000;
+body{
+  padding-left: 20;
+}
+
+.white{
+  background:#CC9999;
   clear:both;
 }
 
-.bottom{
+.second_row{
   background:#FFFFFF;
   clear:both;
 }
 
-.quad1{
-  float: left;
-  background:#33CCCC;
-  width:300px;
-  padding:5px 10px;
-}
-
-.quad2{
-  float: right;
-  background:#006699;
-  width:300px;
-  padding:5px 10px;
-}
-
-.quad3{
-  float: left;
-  background:#009999;
-  width:300px;
-  padding:5px 10px;
-}
-
-.quad4{
-  float: right;
-  background:#00CC99;
-  width:300px;
-  padding:5px 10px;
-}
-
-.absent{
-   float: left;
-   background:#CC9999;
-   padding:5px 10px;
-  clear:both;
-}
 

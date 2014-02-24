@@ -1,23 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>NkuRails</title>
+  <title>Bueller</title>
   <%= stylesheet_link_tag    "application", media: "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <h1> Bueller </h1>
-<% if @current_student %>
-  <div>Hello, <%= @current_student.name %></div>
-  <%= link_to "Edit Profile", edit_path %>
-  <%= link_to "Sign Out", logout_path %>
-  <%= link_to "I'm here!", get_attendance_path %>
-<% else %>
-  <%= link_to "Sign Up", new_student_path %>
-  <%= link_to "Sign In", login_page_path %>
-<% end %>
-
+  
+  <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="students">Bueller</a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          <% if @current_student %>
+          <li> <%= link_to "Hello, #{@current_student.name}", students_path %> </li>
+          <li> <%= link_to "Edit Profile", edit_path %></li>
+          <li><%= link_to "I'm here!", get_attendance_path %></li>
+          <li><%= link_to "Sign Out", logout_path %></li>
+          <% else %>
+          <li><%= link_to "Sign Up", new_student_path %></li>
+          <li><%= link_to "Sign In", login_page_path %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+  
 <% if flash[:error] -%>
   <p class='error'><%=h flash[:error] %></p>
 <% end -%>
