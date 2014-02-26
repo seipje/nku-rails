@@ -1,15 +1,14 @@
 <h1>Students' Attendances
-  <% if( @selected_student ) %>
-  for <%= @selected_student.nickname %>
+  <% if(@desired_student) %>
+  for <%= @desired_student.nickname %>
   <% end %>  
 </h1>
 
 <ul>
   <% @attendances.each do |attendance| %>
   <li>
-    <span><%= link_to(attendance.student.nickname, student_attendances_path( attendance.student ) ) %></span>
+    <span><%= link_to(attendance.student.nickname, student_attendances_path(attendance.student)) %></span>
     <span><%= attendance.attended_on %></span>
-    <img src="<%= attendance.student.image_url %>" />
   </li>
   <% end %>
 </ul>
