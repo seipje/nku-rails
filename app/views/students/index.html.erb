@@ -1,15 +1,16 @@
 <div class="page-header">
 </div>
 
+<%= link_to "View all attendances", attendances_path  %>
+
+<h2>Attendance</h2>
+<h3><%= @desired_date %></h3>
+
 <%= form_tag(students_path, method: 'get') do %>
   <%= date_field_tag('desired_date', @desired_date) %>
   <%= submit_tag "Go!" %>
 <% end %>
 
-<%= link_to "View all attendances", attendances_path  %>
-
-<h2>Attendance</h2>
-<h3><%= @desired_date %></h3>
 <div id="top">
   <div class="span6">
     <h4>Quadrant 1</h4>
@@ -50,7 +51,8 @@
     <% end %>
   </div>
   <div class="span12">
-  <p>Absent</p>
+    <br><br>
+  <h4>Absent</h4>
   <% @absent.each do |student| %>
     <%= student.nickname %>
     <br>
