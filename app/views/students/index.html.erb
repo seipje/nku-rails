@@ -1,59 +1,64 @@
 <div class="page-header">
 </div>
 
-<h3>Attendance</h3>
-<h4><%= Date.today %></h4>
-<div id="row">
-  <div class="white">
-    <div class="span6">
-      <h4>Quadrant 1</h4>
-      <% @in_seat_1.each do |student| %>
-        <%= student.nickname %>
-        <br>
-        <%= image_tag student.imageURL, size: "150x150" %>
-        <br>
-      <% end %>
-    </div>
-    <div class="span6">
-      <h4>Quadrant 2</h4>
-      <% @in_seat_2.each do |student| %>
-        <%= student.nickname %>
-        <br>
-        <%= image_tag student.imageURL, size: "150x150" %>
-        <br>
-      <% end %>
-    </div>
-  </div>
-  <div class="second_row">
-    <div class="span6">
-      <h4>Quadrant 3</h4>
-      <% @in_seat_3.each do |student| %>
-        <%= student.nickname %>
-        <br>
-        <%= image_tag student.imageURL, size: "150x150" %>
-        <br>
-      <% end %>
-    </div>
-    <div class="span6">
-      <h4>Quadrant 4</h4>
-      <% @in_seat_4.each do |student| %>
-        <%= student.nickname %>
-        <br>
-        <%= image_tag student.imageURL, size: "150x150" %>
-        <br>
-      <% end %>
-    </div>
-  </div>
-    <div class="span12">
-    <h4>Absent</h4>
-    <% @absent.each do |student| %>
+<%= form_tag(students_path, method: 'get') do %>
+  <%= date_field_tag('desired_date', @desired_date) %>
+  <%= submit_tag "Go!" %>
+<% end %>
+
+<%= link_to "View all attendances", attendances_path  %>
+
+<h2>Attendance</h2>
+<h3><%= @desired_date %></h3>
+<div id="top">
+  <div class="span6">
+    <h4>Quadrant 1</h4>
+    <% @in_seat_1.each do |student| %>
       <%= student.nickname %>
       <br>
       <%= image_tag student.imageURL, size: "150x150" %>
+      <br>
     <% end %>
-    </div>
+  </div>
+  <div class="span6">
+    <h4>Quadrant 2</h4>
+    <% @in_seat_2.each do |student| %>
+      <%= student.nickname %>
+      <br>
+      <%= image_tag student.imageURL, size: "150x150" %>
+      <br>
+    <% end %>
+  </div>
+</div>
+<div class="bottom">
+  <div class="span6">
+    <h4>Quadrant 3</h4>
+    <% @in_seat_3.each do |student| %>
+      <%= student.nickname %>
+      <br>
+      <%= image_tag student.imageURL, size: "150x150" %>
+      <br>
+    <% end %>
+  </div>
+  <div class="span6">
+    <h4>Quadrant 4</h4>
+    <% @in_seat_4.each do |student| %>
+      <%= student.nickname %>
+      <br>
+      <%= image_tag student.imageURL, size: "150x150" %>
+      <br>
+    <% end %>
+  </div>
+  <div class="span12">
+  <p>Absent</p>
+  <% @absent.each do |student| %>
+    <%= student.nickname %>
+    <br>
+    <%= image_tag student.imageURL, size: "150x150" %>
+  <% end %>
+  </div>
 </div>
 
-</div>
+
 
 

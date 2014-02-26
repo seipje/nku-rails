@@ -6,6 +6,14 @@ class StudentsController < ApplicationController
   def create
     @student = Student.create!(student_params)
     session[:student_id] = @student.id
+    
+    if(params[:student][:image_url].empty?)
+      require 'digest/md5'
+      email_address = params[:student][:email].downcase
+      hash = Digest::MD5.hexdigest(email_address)
+      params[:student][:image_url] = "http://www.gravatar.com/avatar/#{hash}"
+    end
+    
     redirect_to students_path, notice: "Hi #{@student.name}. Welcome to Bueller!"
   end
 
@@ -28,13 +36,13 @@ class StudentsController < ApplicationController
   def index
     @current_student = current_student
     @students = Student.all
-    
-     now = Date.today
-    @in_seat_1 = Student.in_seat(1, now)
-    @in_seat_2 = Student.in_seat(2, now)
-    @in_seat_3 = Student.in_seat(3, now)
-    @in_seat_4 = Student.in_seat(4, now)
-    @absent = Student.absent(now)
+    @desired_date = params[:desired_date] || Date.today
+   
+    @in_seat_1 = Student.in_seat(1, @desired_date)
+    @in_seat_2 = Student.in_seat(2, @desired_date)
+    @in_seat_3 = Student.in_seat(3, @desired_date)
+    @in_seat_4 = Student.in_seat(4, @desired_date)
+    @absent = Student.absent(@desired_date)
   end
 
   private

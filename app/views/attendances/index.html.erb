@@ -1,25 +1,15 @@
-<h1>Attendance</h1>
-<h3><%= Date.today %></h3>
+<h1>Students' Attendances
+  <% if( @selected_student ) %>
+  for <%= @selected_student.nickname %>
+  <% end %>  
+</h1>
 
-<p>Quadrant 1</p>
-<% @in_seat_1.each do |student| %>
-  <li><%= student.name %></li>
+<ul>
+  <% @attendances.each do |attendance| %>
+  <li>
+    <span><%= link_to(attendance.student.nickname, student_attendances_path( attendance.student ) ) %></span>
+    <span><%= attendance.attended_on %></span>
+    <img src="<%= attendance.student.image_url %>" />
+  </li>
   <% end %>
-</p>
-
-<p>Quadrant 2</p>
-<% @in_seat_2.each do |student| %>
-  <li><%= student.name %></li>
-  <% end %>
-</p>
-<p>Quadrant 3</p>
-<% @in_seat_3.each do |student| %>
-  <li><%= student.name %></li>
-  <% end %>
-</p>
-<p>Quadrant 4</p>
-<% @in_seat_4.each do |student| %>
-  <li><%= student.name %></li>
-  <% end %>
-</p>
-
+</ul>
