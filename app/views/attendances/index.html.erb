@@ -3,12 +3,20 @@
   for <%= @desired_student.nickname %>
   <% end %>  
 </h1>
-
 <ul>
+
+
+<% if(@desired_student) %>
   <% @attendances.each do |attendance| %>
   <li>
-    <span><%= link_to(attendance.student.nickname, student_attendances_path(attendance.student)) %></span>
     <span><%= attendance.attended_on %></span>
   </li>
   <% end %>
+<% else %>
+  <% @students.each do |student| %>
+  <li>
+    <span><%= link_to(student.nickname, student_attendances_path(student.id)) %> </span>
+  </li>
+<% end %>
+<% end %>
 </ul>

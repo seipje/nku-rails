@@ -9,7 +9,7 @@ NkuRails::Application.routes.draw do
   end
  
   resources :sessions
-  resources :attendances  
+  resources :attendances
   
   get "sign_out", to: "sessions#destroy"
   get "profile", to: "students#edit"
