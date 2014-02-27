@@ -11,55 +11,62 @@
   <%= submit_tag "Go!" %>
 <% end %>
 
-<div id="top">
-  <div class="span6">
-    <h4>Quadrant 1</h4>
-    <% @in_seat_1.each do |student| %>
-      <%= student.nickname %>
-      <br>
-      <%= image_tag student.imageURL, size: "150x150" %>
-      <br>
-    <% end %>
-  </div>
-  <div class="span6">
-    <h4>Quadrant 2</h4>
-    <% @in_seat_2.each do |student| %>
-      <%= student.nickname %>
-      <br>
-      <%= image_tag student.imageURL, size: "150x150" %>
-      <br>
-    <% end %>
-  </div>
-</div>
-<div class="bottom">
-  <div class="span6">
-    <h4>Quadrant 3</h4>
-    <% @in_seat_3.each do |student| %>
-      <%= student.nickname %>
-      <br>
-      <%= image_tag student.imageURL, size: "150x150" %>
-      <br>
-    <% end %>
-  </div>
-  <div class="span6">
-    <h4>Quadrant 4</h4>
-    <% @in_seat_4.each do |student| %>
-      <%= student.nickname %>
-      <br>
-      <%= image_tag student.imageURL, size: "150x150" %>
-      <br>
-    <% end %>
-  </div>
-  <div class="span12">
-    <br><br>
-  <h4>Absent</h4>
-  <% @absent.each do |student| %>
-    <%= student.nickname %>
-    <br>
-    <%= image_tag student.imageURL, size: "150x150" %>
-  <% end %>
-  </div>
-</div>
+<table class="table table-bordered">
+  <tbody>
+    <tr>
+      <td>
+        <h4>Quadrant 1</h4>
+        <% @in_seat_1.each do |student| %>
+          <%= student.nickname %>
+          <br>
+          <%= image_tag student.imageURL, size: "150x150" %>
+          <br>
+        <% end %>
+      </td>
+      <td>
+        <h4>Quadrant 2</h4>
+        <% @in_seat_2.each do |student| %>
+          <%= student.nickname %>
+          <br>
+          <%= image_tag student.imageURL, size: "150x150" %>
+          <br>
+        <% end %>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <h4>Quadrant 3</h4>  
+        <% @in_seat_3.each do |student| %>
+          <%= student.nickname %>
+          <br>
+          <%= image_tag student.imageURL, size: "150x150" %>  
+          <br>
+        <% end %>
+      </td>
+      <td>
+        <h4>Quadrant 4</h4>
+        <% @in_seat_4.each do |student| %>
+          <%= student.nickname %>
+          <br>
+          <%= image_tag student.imageURL, size: "150x150" %>
+          <br>
+        <% end %>
+      </td> 
+    </tr>
+    <tr>
+      <td>
+        <br><br>
+        <h4>Absent</h4>
+        <% @absent.each do |student| %>
+          <%= student.nickname %>
+          <br>
+          <%= image_tag student.imageURL, size: "150x150" %>
+        <% end %>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 
 
