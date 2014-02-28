@@ -37,6 +37,7 @@ class StudentsController < ApplicationController
     @current_student = current_student
     @students = Student.all
     @desired_date = params[:desired_date] || Date.today
+    @present_students = Student.present
    
     @in_seat_1 = Student.in_seat(1, @desired_date)
     @in_seat_2 = Student.in_seat(2, @desired_date)

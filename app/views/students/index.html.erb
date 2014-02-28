@@ -11,6 +11,28 @@
   <%= submit_tag "Go!" %>
 <% end %>
 
+<div id="piechart"> </div>
+  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Characteristic', 'Percentage'],
+          ['Present', <%= @present_students.size %>],
+          ['Absent',   <%= @absent.size %>]
+        ]);
+
+        var options = {
+          title: 'Attendance Percentage'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+        chart.draw(data, options);
+      }
+    </script>
+
+
 <table class="table table-bordered">
   <tbody>
     <tr>
