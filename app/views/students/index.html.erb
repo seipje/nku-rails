@@ -81,9 +81,9 @@
         <br><br>
         <h4>Absent</h4>
         <% @absent.each do |student| %>
-          <%= student.nickname %>
-          <br>
           <%= image_tag student.imageURL, size: "150x150" %>
+          <%= student.nickname %>        
+          <br><br><br>
         <% end %>
       </td>
     </tr>

@@ -1,0 +1,12 @@
+<div class="page-header">
+</div>
+
+<h2>All Students</h2>
+
+<% @students.each do |student| %>
+  <%= image_tag student.imageURL, size: "150x150" %>
+  <%= student.name %>
+  <%= student.nickname %>
+  <%= student.email %>
+  <br>
+ <% end %>
