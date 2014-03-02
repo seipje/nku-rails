@@ -1,95 +1,96 @@
 <div class="page-header">
 </div>
 
-<%= link_to "View all attendances", attendances_path  %>
-
-<h2>Attendance</h2>
-<h3><%= @desired_date %></h3>
-
-<%= form_tag(students_path, method: 'get') do %>
-  <%= date_field_tag('desired_date', @desired_date) %>
-  <%= submit_tag "Go!" %>
-<% end %>
-
-<div id="piechart"> </div>
-  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <script type="text/javascript">
-      google.load("visualization", "1", {packages:["corechart"]});
-      google.setOnLoadCallback(drawChart);
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['Characteristic', 'Percentage'],
-          ['Present', <%= @present_students.size %>],
-          ['Absent',   <%= @absent.size %>]
-        ]);
-
-        var options = {
-          title: 'Attendance Percentage'
-        };
-
-        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-        chart.draw(data, options);
-      }
-    </script>
-
-
-<table class="table table-bordered">
-  <tbody>
-    <tr>
-      <td>
-        <h4>Quadrant 1</h4>
-        <% @in_seat_1.each do |student| %>
-          <%= student.nickname %>
-          <br>
-          <%= image_tag student.imageURL, size: "150x150" %>
-          <br>
-        <% end %>
-      </td>
-      <td>
-        <h4>Quadrant 2</h4>
-        <% @in_seat_2.each do |student| %>
-          <%= student.nickname %>
-          <br>
-          <%= image_tag student.imageURL, size: "150x150" %>
-          <br>
-        <% end %>
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-        <h4>Quadrant 3</h4>  
-        <% @in_seat_3.each do |student| %>
-          <%= student.nickname %>
-          <br>
-          <%= image_tag student.imageURL, size: "150x150" %>  
-          <br>
-        <% end %>
-      </td>
-      <td>
-        <h4>Quadrant 4</h4>
-        <% @in_seat_4.each do |student| %>
-          <%= student.nickname %>
-          <br>
-          <%= image_tag student.imageURL, size: "150x150" %>
-          <br>
-        <% end %>
-      </td> 
-    </tr>
-    <tr>
-      <td>
-        <br><br>
-        <h4>Absent</h4>
-        <% @absent.each do |student| %>
-          <%= image_tag student.imageURL, size: "150x150" %>
-          <%= student.nickname %>        
-          <br><br><br>
-        <% end %>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
+<div class="container" align="center">
+  <h2>Attendance</h2>
+  <h3><%= @desired_date %></h3>
+  
+  <%= form_tag(students_path, method: 'get') do %>
+    <%= date_field_tag('desired_date', @desired_date) %>
+    <%= submit_tag "Go!" %>
+  <% end %>
+  
+  <p align=center style="font-weight: bold;">Attendance Percentage</p>
+  
+  <div id="piechart"> </div>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+      <script type="text/javascript">
+        google.load("visualization", "1", {packages:["corechart"]});
+        google.setOnLoadCallback(drawChart);
+        function drawChart() {
+          var data = google.visualization.arrayToDataTable([
+            ['Characteristic', 'Percentage'],
+            ['Present', <%= @present_students.size %>],
+            ['Absent',   <%= @absent.size %>]
+          ]);
+  
+          var options = {
+             //title: 'Attendance Percentage'
+          };
+  
+          var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+          chart.draw(data, options);
+        }
+      </script>
+  
+  
+  <table class="table table-bordered">
+    <tbody>
+      <tr>
+        <td>
+          <h4>Quadrant 1</h4>
+          <% @in_seat_1.each do |student| %>
+            <%= student.nickname %>
+            <br>
+            <%= image_tag student.imageURL, size: "150x150" %>
+            <br>
+          <% end %>
+        </td>
+        <td>
+          <h4>Quadrant 2</h4>
+          <% @in_seat_2.each do |student| %>
+            <%= student.nickname %>
+            <br>
+            <%= image_tag student.imageURL, size: "150x150" %>
+            <br>
+          <% end %>
+        </td>
+      </tr>
+  
+      <tr>
+        <td>
+          <h4>Quadrant 3</h4>  
+          <% @in_seat_3.each do |student| %>
+            <%= student.nickname %>
+            <br>
+            <%= image_tag student.imageURL, size: "150x150" %>  
+            <br>
+          <% end %>
+        </td>
+        <td>
+          <h4>Quadrant 4</h4>
+          <% @in_seat_4.each do |student| %>
+            <%= student.nickname %>
+            <br>
+            <%= image_tag student.imageURL, size: "150x150" %>
+            <br>
+          <% end %>
+        </td> 
+      </tr>
+      <tr>
+        <td>
+          <br><br>
+          <h4>Absent</h4>
+          <% @absent.each do |student| %>
+            <%= image_tag student.imageURL, size: "150x150" %>
+            <%= student.nickname %>        
+            <br><br><br>
+          <% end %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 
 

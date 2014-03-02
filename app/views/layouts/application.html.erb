@@ -16,7 +16,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </a>
-      <a class="brand" href="students">Bueller</a>
+      <a class="brand" <% if @current_student %>href="students"<%end%>>Bueller</a>
       <div class="nav-collapse">
         <ul class="nav">
           <% if @current_student %>

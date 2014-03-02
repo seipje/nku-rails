@@ -12,15 +12,11 @@
 
 <% if(@desired_student) %>
   <% @attendances.each do |attendance| %>
-  <li>
-    <span><%= attendance.attended_on %></span>
-  </li>
+  <li><span><%= attendance.attended_on %></span></li>
   <% end %>
 <% else %>
   <% @students.each do |student| %>
-  <li>
-    <span><%= link_to(student.nickname, student_attendances_path(student.id)) %> </span>
-  </li>
-<% end %>
+    <li><span><%= link_to(student.nickname, student_attendances_path(student.id)) %> </span></li>
+  <% end %>
 <% end %>
 </ul>
