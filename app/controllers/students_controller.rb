@@ -9,13 +9,8 @@ class StudentsController < ApplicationController
   def create
     @student = Student.create!(student_params)
     session[:student_id] = @student.id
+        
     
-    if(params[:student][:image_url].empty?)
-      require 'digest/md5'
-      email_address = params[:student][:email].downcase
-      hash = Digest::MD5.hexdigest(email_address)
-      params[:student][:image_url] = "http://www.gravatar.com/avatar/#{hash}"
-    end
     
     redirect_to students_path, notice: "Hi #{@student.name}. Welcome to Bueller!"
   end

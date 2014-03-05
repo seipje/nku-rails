@@ -4,6 +4,7 @@
 <div class="container" align="center">
   <h2>Attendance</h2>
   <h3><%= @desired_date %></h3>
+  <h4><%= Time.zone.now %></h4>
   
   <%= form_tag(students_path, method: 'get') do %>
     <%= date_field_tag('desired_date', @desired_date) %>
@@ -42,7 +43,7 @@
           <% @in_seat_1.each do |student| %>
             <%= student.nickname %>
             <br>
-            <%= image_tag student.imageURL, size: "150x150" %>
+            <%= image_tag student.image_url, size: "150x150" %>
             <br>
           <% end %>
         </td>
@@ -51,7 +52,7 @@
           <% @in_seat_2.each do |student| %>
             <%= student.nickname %>
             <br>
-            <%= image_tag student.imageURL, size: "150x150" %>
+            <%= image_tag student.image_url, size: "150x150" %>
             <br>
           <% end %>
         </td>
@@ -63,7 +64,7 @@
           <% @in_seat_3.each do |student| %>
             <%= student.nickname %>
             <br>
-            <%= image_tag student.imageURL, size: "150x150" %>  
+            <%= image_tag student.image_url, size: "150x150" %>  
             <br>
           <% end %>
         </td>
@@ -72,7 +73,7 @@
           <% @in_seat_4.each do |student| %>
             <%= student.nickname %>
             <br>
-            <%= image_tag student.imageURL, size: "150x150" %>
+            <%= image_tag student.image_url, size: "150x150" %>
             <br>
           <% end %>
         </td> 
@@ -82,7 +83,7 @@
           <br><br>
           <h4>Absent</h4>
           <% @absent.each do |student| %>
-            <%= image_tag student.imageURL, size: "150x150" %>
+            <%= image_tag student.image_url, size: "150x150" %>
             <%= student.nickname %>        
             <br><br><br>
           <% end %>
