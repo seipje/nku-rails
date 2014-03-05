@@ -1,8 +1,5 @@
 NkuRails::Application.routes.draw do
   #get "attendance/index"
-  resources :posts do
-    resources :comments
-  end
 
   resources :students, except: :edit do
     resources :attendances
