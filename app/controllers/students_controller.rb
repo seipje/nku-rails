@@ -10,9 +10,9 @@ class StudentsController < ApplicationController
     @student = Student.create!(student_params)
     session[:student_id] = @student.id
 
-    if(params[:student][:image_url].empty?)
-      params[:image_url] = @student.gravatar_url
-    end
+    #if(params[:student][:image_url].empty?)
+     # params[:image_url] = @student.gravatar_url
+   # end
     
     redirect_to students_path, notice: "Hi #{@student.name}. Welcome to Bueller!"
   end
