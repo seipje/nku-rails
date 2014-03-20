@@ -1,0 +1,27 @@
+<div class="page-header">
+</div>
+
+<div class="row" align="center">
+  <table>                         
+    <tr>                          
+      <th><h4>Assignment Name</h4></th>
+      <th><h4>Student Name</h4></th>
+      <th><h4>Score</h4></th>
+      <th><h4>Total</h4></th>
+      <th><h4>Percentage</h4></th>
+    </tr>
+  <% @assignments.each do |assignment| %>       
+    <tr>
+      <td><%= assignment.assignment_name %></td>
+      <td><%= assignment.student_name %></td>
+      <td><%= assignment.score %></td>
+      <td><%= assignment.total %></td>
+      <td><%= assignment.percentage %></td>
+    </tr>
+  <% end %>
+  </table> 
+</div>
+
+Average Score: <% @average_grade %>
+
+

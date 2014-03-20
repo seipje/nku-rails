@@ -7,7 +7,6 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  
   <div class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container">
@@ -19,8 +18,19 @@
       <a class="brand" <% if @current_student %>href="students"<%end%>>Bueller</a>
       <div class="nav-collapse">
         <ul class="nav">
-          <% if @current_student %>
+          <% if @current_student && @current_student.admin? %>
+          <li> <%= link_to "Hello, admin #{@current_student.name}", students_path %> </li>
+          <li><%= link_to "Create Assignment", new_assignment_path %></li>
+          <li><%= link_to "All Assignments", assignments_path %></li>
+          <li><%= link_to "I'm here!", get_attendance_path %></li>
+          <li> <%= link_to "Seating Chart", students_path %></li>
+          <li> <%= link_to "All Attendances", attendances_path %></li>
+          <li> <%= link_to "All Students", allstudents_path %></li>
+          <li> <%= link_to "Edit Profile", edit_path %></li>
+          <li><%= link_to "Sign Out", logout_path %></li>          
+          <% elsif @current_student %>
           <li> <%= link_to "Hello, #{@current_student.name}", students_path %> </li>
+          <li><%= link_to "My Assignments", assignments_path %></li>
           <li><%= link_to "I'm here!", get_attendance_path %></li>
           <li> <%= link_to "Seating Chart", students_path %></li>
           <li> <%= link_to "All Attendances", attendances_path %></li>

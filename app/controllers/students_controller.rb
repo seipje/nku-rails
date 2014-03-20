@@ -46,6 +46,11 @@ class StudentsController < ApplicationController
     @absent = Student.absent(@desired_date)
   end
 
+  helper_method :admin
+  def admin
+    @admin ||= current_student.params[:admin]
+  end
+  
   private
 
   def student_params

@@ -9,6 +9,11 @@
       <%= f.label :nickname, 'Nickname' %>
       <%= f.text_field :nickname, class: 'form-control' %>
     </div>
+  
+    <div class="form-group">
+      <%= f.label :nickname, 'Admin Status' %>
+      <%= f.select :admin, [['Administrator', true], ['Regular', false]] %>
+    </div>
 
     <div class="form-group">
       <%= f.label :email %>

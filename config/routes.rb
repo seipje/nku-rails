@@ -8,6 +8,7 @@ NkuRails::Application.routes.draw do
   resources :sessions
   resources :attendances
   resources :allstudents
+  resources :assignments
   
   get "sign_out", to: "sessions#destroy"
   get "profile", to: "students#edit"
@@ -20,6 +21,8 @@ NkuRails::Application.routes.draw do
   
   get "attendance", to: "attendances#new", as: :get_attendance
   post "attendance/process", to: "attendances#create", as: :post_attendance
+  
+ 
 
 
   root to: "students#index"

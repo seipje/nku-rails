@@ -1,0 +1,33 @@
+<div class="page-header">
+</div>
+
+<div class="row" align="center">
+  <h2>Create New Assignment</h2>
+  <%= form_for @assignment do |f| %>
+  
+    <div class="form-group">
+      <%= f.label :name, 'Student Name' %>
+      <%= f.collection_select(:student_name, Student.all, :name, :name) %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :assignment_name, 'Assignment Name' %>
+      <%= f.text_field :assignment_name, class: 'form-control' %>
+    </div>
+  
+    <div class="form-group">
+      <%= f.label :score, 'Score' %>
+      <%= f.text_field :score, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :total, 'Total' %>
+      <%= f.text_field :total, class: 'form-control' %>
+    </div>
+
+
+    <%= f.submit  %>
+    &nbsp;or
+    <%= link_to 'Cancel', students_path %>
+  <% end %>
+</div>

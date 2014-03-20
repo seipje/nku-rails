@@ -3,11 +3,14 @@ class Student < ActiveRecord::Base
   
   has_secure_password
   has_many :attendances, dependent: :destroy
+  has_many :assignments, dependent: :destroy
   
   validates :name, 
     :presence => true, 
     :length => { :minimum => 3 }, 
     :uniqueness => true
+  
+  validates :admin, :presence => true
 
   validates :password_digest,
     :length => { :minimum => 4, :if => :validate_password? },
@@ -35,6 +38,12 @@ class Student < ActiveRecord::Base
     attendances = Attendance.where("attended_on = ?", date)
     attending_students = attendances.collect{ |a| a.student_id }
     return Student.where.not(id: attending_students)
+  end
+  
+  def self.administrator
+    if Student.where(:admin => true)
+      @administrator = Student.current_student
+    end
   end
   
   private
