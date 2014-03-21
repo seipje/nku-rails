@@ -22,6 +22,8 @@ NkuRails::Application.routes.draw do
   get "attendance", to: "attendances#new", as: :get_attendance
   post "attendance/process", to: "attendances#create", as: :post_attendance
   
+  #post "upload", to: "students/upload", as: :upload_students
+  
  
 
 

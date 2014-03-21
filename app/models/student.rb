@@ -40,12 +40,6 @@ class Student < ActiveRecord::Base
     return Student.where.not(id: attending_students)
   end
   
-  def self.administrator
-    if Student.where(:admin => true)
-      @administrator = Student.current_student
-    end
-  end
-  
   private
 
   def validate_password?

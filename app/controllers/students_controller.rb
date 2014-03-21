@@ -45,6 +45,9 @@ class StudentsController < ApplicationController
     @in_seat_4 = Student.in_seat(4, @desired_date)
     @absent = Student.absent(@desired_date)
   end
+  
+  #def upload
+  #end
 
   helper_method :admin
   def admin

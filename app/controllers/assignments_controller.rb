@@ -18,13 +18,18 @@ class AssignmentsController < ApplicationController
   
   def index
     @current_student = current_student
+    #@students = Student.all
     
     if @current_student && @current_student.admin?
       @assignments = Assignment.all
-    else
+    elsif @current_student
       @assignments = Assignment.find(:all, :conditions => {:student_name => @current_student.name})
+    else
+      redirect_to students_path, notice: "Unauthorized!"
     end
-    #@average_grade = @assignments.average_percentage
+    #@in_seat_1 = Student.in_seat(1, @desired_date)
+    
+    @average_grade = Assignment.average_percentage
   end
   
    private

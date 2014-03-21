@@ -2,6 +2,10 @@
 </div>
 
 <div class="row" align="center">
+  <% if @current_student.admin? %>
+    <!-- a drop down list of users so the admin can pick from them -->
+    
+  <% end %>
   <table>                         
     <tr>                          
       <th><h4>Assignment Name</h4></th>
@@ -20,8 +24,8 @@
     </tr>
   <% end %>
   </table> 
-</div>
 
-Average Score: <% @average_grade %>
+  <h4>Current Grade: <%= @average_grade %></h4>
+</div>
 
 
