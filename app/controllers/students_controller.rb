@@ -45,13 +45,10 @@ class StudentsController < ApplicationController
     @in_seat_4 = Student.in_seat(4, @desired_date)
     @absent = Student.absent(@desired_date)
   end
-  
-  #def upload
-  #end
 
-  helper_method :admin
-  def admin
-    @admin ||= current_student.params[:admin]
+  helper_method :all_students
+  def all_students
+    @all_students ||= Student.all
   end
   
   private

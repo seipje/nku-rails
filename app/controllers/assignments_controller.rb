@@ -18,17 +18,19 @@ class AssignmentsController < ApplicationController
   
   def index
     @current_student = current_student
-    #@students = Student.all
     
     if @current_student && @current_student.admin?
       @assignments = Assignment.all
     elsif @current_student
       @assignments = Assignment.find(:all, :conditions => {:student_name => @current_student.name})
+      # This is where I'd put the logic to only show the average for the current student's grades
+      #@average_grade = Assignment.average_percentage
     else
       redirect_to students_path, notice: "Unauthorized!"
     end
-    #@in_seat_1 = Student.in_seat(1, @desired_date)
     
+    # I know that this is showing the percentage for all the grades. But I can't figure out how to 
+    # get it to work right. I didn't start this assignment soon enough and now I'm out of time.
     @average_grade = Assignment.average_percentage
   end
   

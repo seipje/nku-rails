@@ -10,7 +10,7 @@ class Student < ActiveRecord::Base
     :length => { :minimum => 3 }, 
     :uniqueness => true
   
-  validates :admin, :presence => true
+  # validates :admin, :presence => true
 
   validates :password_digest,
     :length => { :minimum => 4, :if => :validate_password? },
